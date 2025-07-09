@@ -3,7 +3,7 @@ import path from "path";
 import { faker } from "@faker-js/faker";
 import { ulid } from "ulid";
 
-const dataDir = path.join(process.cwd(),  "store");
+const dataDir = path.join("/store");
 
 async function writeJSON(fileName: string, data: unknown) {
   await fs.mkdir(dataDir, { recursive: true });

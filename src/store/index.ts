@@ -3,7 +3,7 @@ import fs from "fs/promises";
 import path from "path";
 import { ulid } from "ulid";
 
-const dataDir = path.join(process.cwd(), "store");
+const dataDir = path.join("/store");
 
 async function readJSON(fileName: string) {
   try {
