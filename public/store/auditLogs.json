@@ -1,0 +1,34 @@
+[
+  {
+    "id": "01JZQGGE9JMJZBV97ZG9RDKBT1",
+    "timestamp": "2025-07-09T11:53:03.028Z",
+    "action": "edit",
+    "listingId": "01JZQE3CYVF5TPB483KBJDPBYT",
+    "adminId": "01JZQE3CYNV2JNC9640YD9XTWW",
+    "details": "{\"title\":\"Nissan LeBaron\",\"description\":\"Quibusdam appello bos molestiae iste deficio crebro accommodo. Vomer depono laborum utpote sodalitas voveo.\",\"status\":\"PENDING\",\"pricePerDay\":56.99,\"updatedBy\":\"admin1@example.com\"}"
+  },
+  {
+    "id": "01JZQGGR1N07D7VR5ED7YQN1ST",
+    "timestamp": "2025-07-09T11:53:13.013Z",
+    "listingId": "01JZQE3CYVF5TPB483KBJDPBYT",
+    "adminId": "01JZQE3CYNV2JNC9640YD9XTWW",
+    "details": "Approved the listing by: Jackie Bailey DDS",
+    "action": "approve"
+  },
+  {
+    "id": "01JZQGH0W40E3M63R8JHZ8DCT7",
+    "timestamp": "2025-07-09T11:53:22.052Z",
+    "listingId": "01JZQE3CYX3Y5KD56J9PK1GXQA",
+    "adminId": "01JZQE3CYNV2JNC9640YD9XTWW",
+    "details": "Rejected the listing by: Jackie Bailey DDS",
+    "action": "reject"
+  },
+  {
+    "id": "01JZR1A8W2VX1M70VHJ663G5N0",
+    "timestamp": "2025-07-09T16:46:46.659Z",
+    "action": "edit",
+    "listingId": "01JZQE3CYVF5TPB483KBJDPBYT",
+    "adminId": "01JZQE3CYNV2JNC9640YD9XTWW",
+    "details": "{\"title\":\"Nissan LeBaron\",\"description\":\"Quibusdam appello bos molestiae iste deficio crebro accommodo. Vomer depono laborum utpote sodalitas voveo.\",\"status\":\"PENDING\",\"pricePerDay\":56.99,\"updatedBy\":\"admin1@example.com\"}"
+  }
+]
