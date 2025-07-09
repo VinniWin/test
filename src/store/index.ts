@@ -3,7 +3,10 @@ import fs from "fs/promises";
 import path from "path";
 import { ulid } from "ulid";
 
-const dataDir = path.join(process.cwd(), "public", "store");
+const dataDir =
+  process.env.NODE_ENV === "production"
+    ? path.join("/tmp", "store") // ✅ Writable in serverless env
+    : path.join(process.cwd(), "public", "store"); // ✅ Works locally
 
 async function readJSON(fileName: string) {
   try {
@@ -20,10 +23,10 @@ async function readJSON(fileName: string) {
 }
 
 async function writeJSON(fileName: string, data: unknown) {
+  await fs.mkdir(dataDir, { recursive: true }); // 💾 Create dir if not exists
   const filePath = path.join(dataDir, fileName);
   await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
 }
-
 export async function getAdmins(): Promise<Admin[]> {
   return readJSON("admins.json");
 }
