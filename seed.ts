@@ -8,13 +8,19 @@ const dataDir =
     ? path.join("/tmp", "store") // ✅ Writable in serverless env
     : path.join(process.cwd(), "public", "store"); // ✅ Works locally
 
-async function writeJSON(fileName: string, data: unknown) {
+async function writeJSONIfNotExists(fileName: string, data: unknown) {
   await fs.mkdir(dataDir, { recursive: true });
 
   const filePath = path.join(dataDir, fileName);
-  await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
-}
 
+  try {
+    await fs.access(filePath); // check if file exists
+    console.log(`${fileName} already exists. Skipping...`);
+  } catch {
+    await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
+    console.log(`${fileName} created.`);
+  }
+}
 export async function seed() {
   console.log("Seeding start...");
 
@@ -37,7 +43,7 @@ export async function seed() {
   };
 
   const admins = [admin1, admin2];
-  await writeJSON("admins.json", admins);
+  await writeJSONIfNotExists("admins.json", admins);
 
   const listingStatuses = ["PENDING"];
 
@@ -54,9 +60,9 @@ export async function seed() {
     adminId: faker.helpers.arrayElement(admins).id,
   }));
 
-  await writeJSON("listings.json", listings);
+  await writeJSONIfNotExists("listings.json", listings);
 
-  await writeJSON("auditLogs.json", []);
+  await writeJSONIfNotExists("auditLogs.json", []);
 
   console.log("Seed complete.");
 }
