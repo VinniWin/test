@@ -3,8 +3,11 @@ import path from "path";
 import { faker } from "@faker-js/faker";
 import { ulid } from "ulid";
 
-const dataDir = path.join("/store");
-
+const dataDir =
+  process.env.NODE_ENV === "production"
+    ? path.join("/tmp", "store") // ✅ Writable in serverless env
+    : path.join(process.cwd(), "public", "store"); // ✅ Works locally
+    
 async function writeJSON(fileName: string, data: unknown) {
   await fs.mkdir(dataDir, { recursive: true });
 
