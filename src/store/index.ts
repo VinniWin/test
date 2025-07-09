@@ -2,6 +2,7 @@ import { Admin, AuditLog, Listing } from "@/types";
 import fs from "fs/promises";
 import path from "path";
 import { ulid } from "ulid";
+import { seed } from "../../seed";
 
 const dataDir =
   process.env.NODE_ENV === "production"
@@ -12,6 +13,7 @@ async function readJSON(fileName: string) {
   try {
     const filePath = path.join(dataDir, fileName);
     const data = await fs.readFile(filePath, "utf-8");
+    seed()
     return JSON.parse(data);
   } catch (e) {
     if (e instanceof Error && (e as NodeJS.ErrnoException).code === "ENOENT") {

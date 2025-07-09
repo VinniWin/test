@@ -7,7 +7,7 @@ const dataDir =
   process.env.NODE_ENV === "production"
     ? path.join("/tmp", "store") // ✅ Writable in serverless env
     : path.join(process.cwd(), "public", "store"); // ✅ Works locally
-    
+
 async function writeJSON(fileName: string, data: unknown) {
   await fs.mkdir(dataDir, { recursive: true });
 
@@ -15,7 +15,7 @@ async function writeJSON(fileName: string, data: unknown) {
   await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
 }
 
-async function seed() {
+export async function seed() {
   console.log("Seeding start...");
 
   const admin1 = {
